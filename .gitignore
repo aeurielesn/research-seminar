@@ -9,3 +9,8 @@
 *.lg
 *.out
 *.xref
+*.css
+*.html
+*.pdf
+*.bbl
+*.ps
