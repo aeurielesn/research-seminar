@@ -18,4 +18,5 @@
 *.ps
 
 # Exclude
+!1/pagina-web/*
 !1/pagina-web/**/*
