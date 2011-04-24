@@ -8,6 +8,9 @@
 *.lg
 *.out
 *.xref
+*.xml
+*.synctex
+*-blx.bib
 
 # Output Formats
 *.dvi
