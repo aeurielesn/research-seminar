@@ -1,0 +1,461 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{natbib}
+\usepackage{bibentry}
+%\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage[spanish]{babel}
+%\usepackage[tex4ht]{hyperref} % activate when creating an HTML
+\usepackage{hyperref}
+%\usepackage{tex4ht} % activate when creating an HTML
+
+\nobibliography*
+\bibliographystyle{unsrt}
+
+\title{Bibliografía Anotada}
+
+\author{Alexander Enrique Urieles Nieto\\
+\href{mailto:aeurielesn@gmail.com}{\nolinkurl{aeurielesn@unal.edu.co}}}
+
+\date{Maestría en Sistemas y Computación\\
+Departamento de Ingeniería de Sistemas e Industrial\\
+Universidad Nacional de Colombia}
+
+\begin{document}
+
+\maketitle
+
+%\nobibliography{bib-anotada}
+%\bibliographystyle{unsrt}
+
+\section*{Bibliografía anotada}
+
+% TODO:
+%   - time and space complexities.
+%   - source/software download url.
+%   - note static and semi-static schemes.
+
+\begin{itemize}
+	\item \textbf{\bibentry{Amir2002}}
+	
+	Propone el problema de búsquedas de patrones sobre texto comprimido sin descompresión explicita, anteriormente no definido. Dejando
+	claro la necesidad de investigación en el tema, especialmente en algoritmos de búsquedas en texto comprimido para algoritmos
+	de compresión en varias dimensiones. No se concentra en el problema de \textit{Run-Length Encoding} (RLE) debido a la aparente 
+	trivialidad de las búsquedas en el texto comprimido de éste. En cambio, se concentra en el problema de 
+	\textit{two-dimensional run-length compressed matching} empleando técnicas de periodicidad en dos dimensiones definidas en \cite{amir1992two}.
+	
+	Presenta un algoritmo subóptimo para el problema de \textit{two-dimensional run-length compressed matching}. 
+	En términos generales, el algoritmo propuesto	se compone de dos fases: una fase de pre-procesamiento y una de búsqueda.
+	En la primera fase se hayan las posiciones de discordancia entre del patrón y el texto comprimido. En la segunda fase se consideran
+	posibles candidatos para \textsl{matching} usando una porción del patrón, luego se crean bloques disyuntos de tamaño 
+	$\frac{m}{2} \times \frac{m}{2}$ que contengan a los posibles candidatos, y por último se verifican los posibles bloques candidatos
+	contra el texto para asegurar una ocurrencia.
+	
+	No hay resultados experimentales del algoritmo presentado en el artículo.
+	
+	\item \textbf{\bibentry{amir2000inplace}}
+	
+	Define un algoritmo \textit{inplace}, una nueva medida para el problema de \textit{compressed matching}, y propone el 
+	primer algoritmo inplace para el problema de búsquedas en texto comprimido sin descompresión explicita para el
+	algoritmo de compresión Run-Length en 2-dimensiones.
+	
+	Un algoritmo es \textit{inplace} cuando la cantidad de espacio extra requerido es proporcional al tamaño del patrón dado.
+	El algoritmo inplace presentado se basa en una estrategia de \textit{duelo} y presenta una forma de acceder los \textit{witness}
+	en tiempo constante razón por la cual anteriormente no se había podido aplicar esta estrategia a Run-Length Encoding (RLE).
+	
+	Detalla altamente los pasos desarrollados por el algoritmo y el proceso en el artículo.
+	En la matriz de entrada se descartan los casos triviales donde las todas filas contienen el mismo carácter por la alta
+	incidencia de patrones que pueden empezar en posiciones arbitrarias.
+	No hay resultados experimentales del algoritmo presentado.
+	
+	\item \textbf{\bibentry{Amir1996299}}
+	
+	Introduce las primeros aproximaciones en la solución al problema de búsquedas de patrones sobre texto comprimido para algoritmos
+	adaptativos como la familia de algoritmos LZ \cite{Ziv2002,Ziv2003,welch1984technique,storer1982data}. También refuerza la necesidad de investigación
+	en el tópico terminando con una lista de problemas abiertos requeridos en el mismo.
+	
+	Se presentan dos algoritmos subóptimos para realizar búsquedas de patrones sobre texto comprimido con LZW \cite{welch1984technique},
+	mostrando el proceso para lograr compensación entre tiempo y espacio para el segundo algoritmo teniendo como base el primero. 	
+	Introduce  un nuevo criterio, el criterio del espacio adicional para algoritmos de compresión de información en cual un algoritmo
+	óptimo no debe usar más de $O(n)$ espacio adicional e incluso de ser posible no usar más de $O(m)$ espacio adicional, siendo $n$ y $m$ los
+	tamaños del texto comprimido y el patrón respectivamente.
+	
+	Se recalca que se presenta el primer algoritmo subóptimo conocido para el tópico de búsquedas de patrones sobre texto comprimido
+	sin descompresión explicita. Afirma que la solución del mismo problema para algoritmos de compresión no adaptativos es trivial. 
+	No hay resultados experimentales de los algoritmos presentados.
+	
+	\item \textbf{\bibentry{bell2002searching}}
+	
+	Presentan dos algoritmo para realizar \textit{online pattern matching} en archivos comprimidos con la transformada de 
+	Burrows-Wheeler \cite{burrows1994block} sin necesidad de índices pre-calculados. El primer algoritmo basado en el algoritmo
+	de Boyer-Moore (BM) \cite{boyer1977fast} utiliza un arreglo adicional para acceder a caracteres arbitrarios directamente en 
+	el texto comprimido. La forma de construcción de este arreglo se presenta en el artículo. El segundo algoritmo usa búsqueda binaria
+	y se basa en el hecho que el algoritmo de Burrows-Wheeler genera una lista ordenada de todas las palabras presentes en
+	el texto lo cual hace posible su aplicación directa.
+	
+	Los resultados experimentales muestran que el primer algoritmo es mucho más rápido para búsquedas de un único patrón que la descompresión
+	y subsiguiente búsqueda usando 	el algoritmo de BM sobre el texto descomprimido e incluso que el segundo algoritmo propuesto usando
+	búsqueda binaria. Sin embargo, el algoritmo de búsqueda binaria es más rápido (casi indiferente con respecto a los resultados con un solo patrón)
+	que ambos cuando se realizan búsquedas de múltiples patrones a la vez con la pequeña desventaja de los requerimientos de memoria que éste 
+	requiere.
+	
+	\item \textbf{\bibentry{Brisaboa2007}}
+	
+	\item \textbf{\bibentry{burrows1994block}}
+	
+	Burrows-Wheeler
+	
+	\item \textbf{\bibentry{chen2004compressed}}
+	
+	Presenta un algoritmo basado en Boyer-Moore (BM) \cite{boyer1977fast} para búsqueda en texto comprimido de secuencias de ADN.
+	
+	El algoritmo de compresión utiliza dos bits para la codificación de cada carácter A, G, T, C; logrando un $75\%$ de compresión
+	y además ayuda en el rendimiento del algoritmo al incrementar el tamaño del alfabeto a $256$ valores.
+	
+	Los resultados experimentales muestran que el algoritmo propuesto es hasta aproximadamente $14$ veces más rápido
+	para patrones de tamaño mayor a $50$ que el software \textit{Agrep}, una herramienta estado-del-arte para búsquedas en texto.
+	En general es más rápido que aplicar BM en el texto descomprimido para patrones de tamaño mayor a $20$, e ineficiente 
+	para patrones cortos.
+	
+	\item \textbf{\bibentry{crochemore1999text}}
+	
+	Presenta un esquema de compresión basado en antidiccionarios. Un antidiccionario es una colección de palabras que no aparecen en el 
+	texto y por lo tanto pueden ser predecibles. Este conjunto de palabras predecibles son consideradas redundantes y pueden
+	ser eliminadas del texto.
+	
+	El algoritmo de compresión genera un autómata finito de las palabras no aceptadas por el alfabeto. Durante el procesamiento
+	del texto original si se llega a un estado final entonces se escribe la otra letra.
+	
+	Esta técnica genera decompresores muy rápido. Los compresores y descompresores pueden ser paralelizables debido a que para
+	la descompresión es únicamente necesario una pequeña parte a la izquierda de una ocurrencia. El algoritmo de compresión es 
+	estático: necesita procesar dos veces el texto, una para la creación del antidiccionario y otra para aplicar la compresión.
+	
+	\item \textbf{\bibentry{DeMoura1998}}
+	
+	Presenta un esquema de compresión que permite búsquedas directamente en el texto comprimido sin necesidad de descompresión 
+	explicita. El esquema también permite búsquedas aproximadas.
+	
+	El esquema hace uso de codificación Huffman usando bytes en lugar de bits, y el árbol tiene grado $128$ en lugar de grado $2$.
+	Un bit es usado para especificar el comienzo de una palabra, y los 7 restantes para la representación de las palabras claves
+	(\textit{codewords}). La elección de estas características para el algoritmo de compresión permite descompresión local en
+	cualquier parte del texto comprimido, además permite una descompresión más rápida puesto que no se necesitan operaciones de 
+	desplazamiento ni enmascaramiento a nivel de bits para el procesamiento del texto comprimido.
+	
+	El algoritmo de búsqueda primero comprime el patrón dado usando la misma codificación que usada para la compresión del texto, y 
+	seguido se realiza la búsqueda del patrón directamente en el texto comprimido. Para búsquedas exactas usaron el algoritmo
+	de Boyer-Moore (BM) \cite{boyer1977fast}. Para búsquedas aproximadas se divide el patrón en partes y usando una heurística 
+	basada en el tamaño y el valor del código de cada parte se selecciona una parte y se aplica un algoritmo de
+	búsqueda de multi-patrones cuando se encuentra una ocurrencia, se revisan las demás partes para ver si hubo una ocurrencia
+	en la posición dada. Este algoritmo no descomprime el texto de ninguna manera a diferencia de \cite{de1998fast}.
+	
+	Los resultados experimentales muestran que cuando se realizan búsquedas complejas o aproximadas, el algoritmo propuesto
+	es hasta $8$ veces más rápido que \textit{Agrep}. Sin embargo, este esquema es únicamente útil para lenguajes 
+	naturales, lo cual reduce el espectro de aplicabilidad.
+	
+	\item \textbf{\bibentry{de1998fast}}
+	
+	Presenta el esquema rápido de compresión y descompresión para lenguajes naturales que permite una aplicación
+	eficiente de búsquedas en texto comprimido sin descompresión explicita. Además presenta el primer algoritmo para 
+	búsqueda aproximada directamente en texto comprimido.
+	
+	El esquema de compresión usa códigos de Huffman a nivel de bytes con un árbol de grado $256$ porque permite
+	alcanzar mejores velocidades de descompresión.
+	La compresión y descompresión asociada con este esquema es extremadamente rápida, y logra mejores índices de compresión
+	en lenguajes naturales que la familia de algoritmos LZ \cite{Ziv2002,Ziv2003,welch1984technique,storer1982data}. Además
+	permite descompresión local desde cualquier parte del texto comprimido.
+	
+	El algoritmo de búsqueda es basado en Shift-Or \cite{Baeza-Yates1992} con un Autómata Finito No Determinista que acepta 
+	las palabras en el patrón para la verificación de falsos positivos con un filtro Boyer-Moore (BM) \cite{boyer1977fast}.
+	Para realizar una búsqueda primero se compara el patrón con cada patrón marcando en una máscara de bits la posición 
+	si hay una ocurrencia. En esta etapa si alguna de las palabras del patrón no se encuentra en el alfabeto, la búsqueda termina
+	y el patrón no puede ser encontrado en el texto. Luego, se realiza la búsqueda en el texto comprimido byte por byte 
+	recorriendo el árbol de Huffman. Al llegar a una hoja se aplica la máscara de bits asociada con el código 
+	a un autómata para verificación del patrón.
+	
+	El esquema puede ser adaptado para búsquedas aproximadas simplemente aplicando el algoritmo apropiado en la etapa de
+	preprocesamiento del patrón contra el alfabeto.
+	
+	Los resultados experimentales muestran que el algoritmo logra un índice de compresión del $30\%$. Para patrones sencillos
+	el algoritmo propuesto es hasta $2$ veces más rápido que \textit{Agrep} sobre el texto descomprimido. Y para búsqueda
+	con patrones complejos es hasta $8$ veces más rápido.
+	
+	\item \textbf{\bibentry{farach1998string}}
+	
+	Presenta el primer algoritmo aleatorio pseudo-óptimo no trivial para búsqueda en texto comprimido con LZ77 \cite{Ziv2002}, del cual
+	afirman que no hay manera no trivial de realizar una búsqueda en texto comprimido.
+	
+	Define un algoritmo \textit{competitivo} como aquel que su tiempo de ejecución es $O(U + P)$ y un algoritmo
+	\textit{oportunista} si su tiempo de ejecución es $o(U + P)$. Un algoritmo \textit{óptimo} es competitivo y oportunista.
+	Donde $U$ es el tamaño del texto descomprimido y $P$ es el tamaño del patrón.
+	
+	El algoritmo propuesto hace uso del método de \textit{Fingerprint} \cite{karp1987efficient} y bajo la noción de que
+	para cadenas con baja entropía la información tiende a aglomerarse en ciertas partes, a partir de esto se 
+	puede descomprimir únicamente las partes relevantes.
+	
+	La complejidad del algoritmo propuesto es $O(N \log^{2}(U/N) + P)$; donde $N$ es el tamaño del texto comprimido, $U$ es el tamaño
+	del texto descomprimido y $P$ es el tamaño del patrón.
+	
+	\item \textbf{\textbf{\bibentry{Huffman1952}}}
+	
+	Presenta un algoritmo para generación de códigos de mínima redundancia con la menor longitud posible del mensaje.
+	
+	El algoritmo es muy sencillo y puede ser resumido de la siguiente forma: a partir de una lista ordenada del alfabeto
+	con las probabilidades para cada mensaje. Se toman los dos mensajes con menor frecuencia, se unen en un mensajes compuesto que 
+	tendrá como probabilidad compuesta la suma de las probabilidades de los elementos unidos. El proceso se repite hasta que únicamente
+	queden dos mensajes restantes. La probabilidad compuesta de la unión éstos dos últimos mensajes debe dar $1.0$.
+	
+	Los códigos son generados a partir de la raíz del árbol formado por el algoritmo anterior, dando los valores $\left\{0,1\right\}$ a
+	cada uno de los hijos de los nodos (e.g. $0$ para el nodo izquierdo y $1$ para el nodo derecho). El código de cada mensaje (los nodos
+	hojas) es formado por el camino desde la raíz con su representación en binario.
+	
+	\item \textbf{\bibentry{kida2002unifying}}
+	
+	Presenta un \textit{framework} para el estudio de diferentes algoritmos de compresión de información basados en diccionarios.
+	El framework propuesto es aplicable para métodos como la familia de algoritmos LZ \cite{Ziv2002,Ziv2003,welch1984technique, storer1982data}, 
+	Byte-Pair Encoding (BPE) \cite{gage1994new} y Diccionario Estático.
+	
+	Define un \textit{Collage System} como un sistema formal para representación de una cadena por medio de un diccionario $D$
+	y una sequencia $S$ de frases en $D$ con operaciones de concatenación, truncamiento y repetición. Esta definición es usada
+	como base para la presentación de un algoritmo general para búsqueda de patrones en texto comprimido basado en 
+	el algoritmo de \cite{Amir1996299} para búsquedas en texto comprimido con LZW \cite{welch1984technique}. 
+	El algoritmo generalizado para búsqueda de patrones en texto comprimido por \textit{Collage Systems} esencialmente simula
+	el movimiento del algoritmo Knutt-Morris-Pratt (KMP) \cite{knuth1977fast} frase por frase sobre $S$ reportando todas las
+	ocurrencias del patrón dado. El algoritmo es fácilmente modificable para diferentes patrones con la personalización de dos
+	funciones: $Jump$ y $Output$, que son la función de cambio de estado del autómata y la función de impresión de ocurrencias
+	respectivamente.
+	
+	Los autores afirman que el truncamiento presente en algoritmos como LZ77 y LZSS \cite{Ziv2002,storer1982data} ralentiza 
+	el proceso de búsqueda de patrones en texto comprimido.
+	
+	\item \textbf{\bibentry{kida1999shift}}
+	
+	Presenta un algoritmo para búsqueda en texto comprimido para LZW \cite{welch1984technique} basado en la técnica
+	Shift-And \cite{Baeza-Yates1992}. Debido a la restricciones de Shift-And, el algoritmo únicamente puede ser usado
+	para patrones de longitud menor o igual a $32$ caracteres.
+	
+	los resultados experimentales muestran que el algoritmo propuesto es aproximadamente $1.5$ veces más rápido que la 
+	solución trivial de descomprimir y luego buscar sobre el texto descomprimido con la técnica Shift-And, y además
+	de un algoritmo anterior de los mismos autores basado en Aho-Corasick (AC) \cite{aho1975efficient}. Sin embargo,
+	el algoritmo propuesto no puede ser mejor que la búsqueda directa sobre el texto descomprimido usando Shift-And.
+	
+	El algoritmo puede ser adaptado para búsquedas aproximadas y a búsqueda de múltiples patrones.
+	
+	\item \textbf{\bibentry{kida2002multiple}}
+	\item \textbf{\bibentry{klein2002new}}
+	
+	Se plantea un nuevo algoritmo de compresión de substitución de texto basado en el algoritmo LZSS \cite{storer1982data}
+	que en vez de tener referencias a posiciones anteriores utiliza referencias a bloques de compresión siguientes.
+	En general, una tripleta de elementos $(off, len, slide)$ es usada para la compresión haciendo referencia a los $len$ 
+	últimos elementos a una distancia $off$ de la posición actual, moviendo la posición actual $slide$ posiciones.
+	
+	El método no presenta buenos índices de compresión. Las pruebas empíricas presentan mejores resultados que el
+	algoritmos original.
+	
+	\item \bibentry{KNUjda02}
+	\item \bibentry{lempel2002complexity}
+	\item \textbf{\bibentry{Manber1997}}
+	
+	Presenta un nuevo esquema de compresión de información que busca facilitar las búsquedas directamente en el texto
+	comprimido sin descompresión explicita y mejorar los tiempos de búsqueda al tener que revisar una menor cantidad de bits.
+	La compresión funciona a nivel de bytes para mejorar el desempeño práctico del algoritmo debido a que se evitan
+	realizar operaciones de	desplazamiento y enmascaramiento cuando se trabaja a nivel de bits. La aplicación de cualquier
+	algoritmo de búsqueda sobre cadenas de caracteres puede ser usado con este esquema sin necesidad de modificación alguna.
+	
+	El algoritmo de compresión reemplaza los pares de caracteres más frecuentes del texto por una palabra clave (\textit{codeword})
+	especifica. Encontrar la mejor combinación de parejas de tal manera que se reduzca óptimamente la longitud total 
+	del texto comprimido lo resuelven usando una algoritmo aleatorizado con un $100$ iteraciones, debido a que en
+	experimentos iniciales se encontró que con 20 iteraciones se encontraba una solución con menos de $3\%$ de error.
+	
+	El algoritmo de búsqueda después de procesar la lista de parejas al inicio del archivo aplica el algoritmo de compresión
+	al patrón dado y luego aplica el algoritmo de búsqueda sobre el texto comprimido con el patrón comprimido obteniendo una 
+	lista de ocurrencias. A continuación, cada parte del texto donde ocurrió una ocurrencia es descomprimida y se aplica, de
+	ser necesario, nuevamente el algoritmo de búsqueda sobre el texto descomprimido para filtrar la salida.
+	
+	El esquema de compresión no obtiene buenos índices de compresión, aproximadamente $30\%$ de compresión.
+	
+	\item \textbf{\bibentry{matsumoto2002bit}}
+	
+	Presenta el primer algoritmo para búsqueda aproximada en texto comprimido para \textit{Collage Systems} \cite{kida2002unifying}
+	basado en paralelismo de bits. El algoritmo hace uso de un Autómata Finito No Determinista (AFN) para el problema
+	de búsqueda aproximada junto con paralelismo de bits para agrupar conjunto de estados del autómata en una palabra de
+	computadora. Sin embargo, el algoritmo no funciona para encontrar todas las ocurrencias del patrón.
+	
+	Además, los resultados experimentales muestran que el algoritmo no es práctico, puesto que es más lento que la solución trivial de 
+	descomprimir y luego realizar la búsqueda aproximada sobre el texto descomprimido.
+	
+	\item \textbf{\bibentry{Moffat1998}}
+	
+	Presenta un algoritmo para construcción de códigos de mínima redundancia para alfabetos largos que además puede 
+	ser usado para generación de códigos de mínima redundancia con restricción de longitud. El algoritmo usa 
+	Run-Length Encoding (RLE) en una primera étapa, luego genera un grafo a partir del resultado de RLE 
+	y se realizan las uniones de los nodos en orden descendiente de pesos sin pérdida de los nodos unidos.
+	Al final se recorre el grafo por orden descendiente de pesos y frecuencias generando la lista de códigos claves
+	(\textit{codewords}).
+	
+	También se puede modificar el algoritmo propuesto para generación aproximada de códigos Huffman dividiendo la lista
+	de elementos en $r$ partes y asignando la misma frecuencia a cada parte. La generación de códigos con restricción
+	de longitud también pueden ser generados.
+	
+	La complejidad en tiempo y espacio es de $O(r + r \log (n/r))$, la cual es $o(n)$ cuando $r$ es $o(n)$.
+	
+	\item \textbf{\bibentry{Moura2000}}
+	
+	Se presenta una nueva técnica de compresión de información usando códigos Huffman basados en palabras \cite{moffat1989word}
+	que permite realizar diferentes tipos de búsquedas de forma rápida. También se plantean dos algoritmos para la
+	búsqueda directa en el texto comprimido usando códigos Huffman con marcas especiales para representación del comienzo de 
+	una palabra y otro algoritmo usando códigos Huffman sin marcas combinado con el algoritmo Shift-Or \cite{Baeza-Yates1992}
+	para la verificación de los patrones. Los resultados experimentales son buenos para el algoritmo.
+	
+	La nueva técnica no presenta índices de compresión equiparables con la familia de algoritmos LZ
+	\cite{Ziv2002,Ziv2003,welch1984technique, storer1982data}.
+	Además, sólo es útil en textos de lenguaje natural con codificación de 1-byte y que hacen uso de espacio como separador de palabras.
+	Sin embargo, presenta muy buenos resultados para las búsquedas directas sobre el texto comprimido teniendo como base
+	textos largos (mayores a 10MB). Es preferible el uso del segundo algoritmo propuesto.
+	
+	\item \textbf{\bibentry{Navjda03}}
+	
+	Se presenta el primer algoritmo de búsqueda usando expresiones regulares sobre texto comprimido sin descompresión explicita.
+	Se basa especialmente sobre los algoritmos LZ78 y LZW \cite{Ziv2003, welch1984technique}, y en técnicas de \textit{paralelismo de bits}.
+	El algoritmo es una variantes de un algoritmo de un Autómata Finito Determinista (AFD) basado en paralelismo de bits modificado para
+	revisar por bloques de información (de LZ78) en vez de caracteres. Cada bloque puede estar relacionado con otros bloques o caracteres.
+	
+	En términos generales el algoritmo propuesto revisa un texto comprimido $Z = b_{1}, b_{2} \ldots b_{n}$, expresado como un conjunto
+	de $n$ \textit{bloques}; bloque por bloque procesando la cadena representada por éste en el texto original. Presenta resultados 
+	experimentales usando \textit{Compress} como de algoritmo de compresión y dos algoritmos de búsqueda, uno basado en AFD con paralelismo
+	de bits y \textit{nrgrep}. En las pruebas realizadas el algoritmo resulta ser al menos $20\%$ más rápido que descomprimir y luego aplicar
+	bit-FDA o Nrgrep.
+	
+	\item \textbf{\bibentry{navarro1999general}}
+	
+	Se presenta un algoritmo de búsqueda en texto comprimido con LZ77 \cite{Ziv2002}. Se encuentra que el mismo algoritmo puede ser
+	aplicado a LZ78 \cite{Ziv2003} y que además se desempeña mejor. Se presenta una nueva técnica de compresión de información basada
+	en las características del algoritmo de compresión LZ77 manteniendo la misma velocidad de búsqueda sobre texto comprimido
+	notada en LZ78. 
+	
+	La nueva técnica propuesta es subóptima porque se desperdician bits para expresar \textit{flags} y el almacenamiento de la información
+	de compresión no es eficiente, aunque en los resultados experimentales prácticos demuestre casi tan buen índice de compresión como 
+	LZ77. Logra obtener mejores tiempos con la nueva técnica híbrida, con un algoritmo más sencillo que el propuesto para LZ77,
+	para búsquedas en texto comprimido sin descompresión explicita que el paradigma trivial de descomprimir luego buscar usando algoritmos
+	como Sunday \cite{sunday1990very}. Se deja claro que para algoritmos \textsl{adaptativos} como la familia de algoritmos LZ, la 
+	localidad referencial es el gran inconveniente para la resolución del problema de búsqueda sobre texto comprimido.
+	
+	\item \bibentry{navarro2005lzgrep}
+	\item \textbf{\bibentry{navarro2000boyer}}
+	
+	Presenta un algoritmo basado en el algoritmo Boyer-Moore (BM) \cite{boyer1977fast} para búsqueda sobre texto comprimido aplicable
+	para las técnicas LZ78 y LZW \cite{Ziv2003,welch1984technique} que mejora en aproximadamente un $30\%$ el tiempo de búsqueda en
+	comparación con los algoritmos más eficientes.
+	
+	El algoritmo hace uso de los caracteres visibles en el texto comprimido	para realizar los desplazamientos del patrón de BM.
+	Diferentes variaciones del algoritmo fueron implementadas para ser comprobadas experimentalmente. 
+	
+	Todas las implementaciones tuvieron pésimos índices de compresión. Sin embargo, los tiempo de descompresión y búsqueda mejoraron.
+	La implementación que más se destacó fue una para realizar desplazamientos en bloques completos de LZ78.
+	
+	\item \textbf{\bibentry{Navarro2001}}
+	
+	Presenta la primera solución práctica para el problema de búsqueda aproximada sobre texto comprimido con LZ78 y LZW 
+	\cite{Ziv2003,welch1984technique}. La técnica propuesta divide el patrón en $k+1$ partes disyuntas de igual longitud 
+	$\left\lfloor m/(k+1) \right\rfloor$ para luego aplicar un algoritmo de búsqueda de múltiples patrones sobre el texto 
+	comprimido. Cada vez que ocurra una ocurrencia de alguna de las partes, se aplica una descompresión local y se aplica un
+	algoritmo de búsqueda aproximada sobre el texto descomprimido.
+	
+	Tres implementaciones fueron presentadas: una basada en Aho-Corasick (AC) \cite{kida2002multiple}, otra	basada en 
+	Boyer-Moore (BM) \cite{navarro2000boyer}, y la última basada en paralelismo de bits (PB) \cite{kida1999shift,navarro1999general}.
+	
+	Los resultados experimentales muestran que esta técnica es $10$ a $30$ veces más rápida que los trabajos anteriores
+	y $3$ veces más rápida que la solución trivial de descomprimir luego aplicar una búsqueda aproximada estado-del-arte
+	sobre el texto descomprimido para valores moderados de $k/m$ (generalmente bajos), donde $k$ es el número máximo de
+	errores permitidos y $m$ es la longitud del patrón dado. El algoritmo PB mostró mejores resultados en general, aunque el
+	algoritmo BM se desempeña mejor para valores $k/m$ menores a $10\%$.
+	
+	\item \textbf{\bibentry{shibata1999byte}}
+	
+	Presentan dos acercamientos al problema de búsqueda en texto comprimido usando Byte-Pair Encoding (BPE) \cite{gage1994new}.
+	El primero usa fuerza bruta para descomprimir todos los posibles patrones para después aplica Aho-Corasick (AC) \cite{aho1975efficient}
+	y Shift-And \cite{Baeza-Yates1992}, el segundo usa un autómata Knutt-Morris-Pratt (KMP) \cite{knuth1977fast} modificado para
+	procesar cambios de estados consecutivos.
+	
+	Los resultados experimentales muestran que los algoritmos propuestos son aproximadamente entre $1.6$ y $1.9$ veces más rápidos
+	que la búsqueda en sobre el texto original e incluso sobre LZW \cite{welch1984technique}. 
+	
+	\item \textbf{\bibentry{shibata2000speeding}}
+	
+	Presenta un algoritmo para búsqueda en texto comprimido con Byte-Pair Encoding (BPE) \cite{gage1994new}. El algoritmo simula
+	el movimiento del algoritmo Knutt-Morris-Pratt (KMP) \cite{knuth1977fast} modificado para recibir cada \textit{token}
+	de texto comprimido y cambiar los estados correspondientes a la frase representada. Los \textit{tokens} tiene como tamaño 8 bits.
+	
+	Los resultados experimentales muestran que el algoritmo es mejor que Shift-And \cite{Baeza-Yates1992} sobre texto comprimido
+	y texto descomprimido, KMP sobre texto descomprimido. Sin embargo, \textit{Agrep} sobre texto descomprimido sigue siendo más rápido.
+	
+	El tiempo de compresión es mejorado generando una	tabla de substitución a partir de una parte del texto para mejorar el
+	tiempo de compresión. Entre otras cosas, BPE permite descompresión local.
+	
+	\item \textbf{\bibentry{shibata2000boyer}}
+	
+	Presenta un algoritmo de búsqueda de patrones en texto comprimido basado en Boyer-Moore (BM) \cite{boyer1977fast}, que puede ser
+	aplicado a cualquier método de compresión de información definido dentro de un \textit{Collage System} \cite{kida2002unifying}.
+	Los autores escogieron Byte-Pair Encoding (BPE) \cite{gage1994new} como método de compresión porque cumple con las características
+	deseadas de un Collage System.
+	
+	El algoritmo BM revisa el patrón de derecha a izquierda contra cada \textit{token} del texto comprimido y desplaza el patrón 
+	usando una función de desplazamiento. Por cada \textit{token}, primero reporta todas las ocurrencias contenidas en éste, 
+	después revisa y reporta todas las ocurrencias terminadas en el \textit{token} actual, por último calcula 
+	la función de desplazamiento del patrón.
+	
+	Los resultados experimentales muestran que el algoritmo propuesto es aproximadamente entre $1.2$ y $3.0$ veces más 
+	rápido que el software $Agrep$, una herramienta estado-del-arte para búsqueda de patrones en texto.
+	
+	\item \textbf{\bibentry{shibata1999pattern}}
+	
+	Presenta un algoritmo para búsqueda de patrones en texto comprimido usando antidiccionarios \cite{crochemore1999text} que es linealmente proporcional
+	a la longitud del texto comprimido. El algoritmo simula el movimiento del autómata Knuth-Morris-Pratt (KMP) \cite{knuth1977fast} para encontrar las
+	ocurrencias del patrón en el texto.
+	
+	Los autores aseguran que el uso del algoritmo Shift-And \cite{Baeza-Yates1992} en vez del autómata KMP mejorará el rendimiento práctico
+	para patrones de largo menor a 32 caracteres. No hay resultados experimentales del algoritmo propuesto pero se asegurará que los
+	resultados preliminares demuestran la eficiencia del algoritmo propuesto.
+	
+	\item \textbf{\bibentry{takeda2002processing}}
+	
+	Presenta un algoritmo eficiente para búsqueda de patrones en texto comprimido que acepta lenguajes con codificación variable en múltiples bytes
+	como el japonés que no emplea soluciones triviales para normalización de los caracteres. Además no sacrifica velocidad ni utiliza 
+	detectión de falsos positivos.
+	
+	El algoritmo propuesto, PMM, fusiona un Autómata Finito Determinista (AFD) para el reconocimiento de los palabras claves (\textit{codewords}) y
+	una máquina Aho-Corasick (AC) \cite{aho1975efficient} modificada para correr byte por byte. Experimentos sobre texto comprimido con compresión
+	Huffman	demostró que PMM es más rápido que aplicar AC sobre el texto original.
+	
+	La técnica también es aplicable a documentos XML con una modificación para correr con una pila para el almacenamiento de las
+	etiquetas encontradas. En comparación con una búsqueda usando AC, PMM demostró ser aproximadamente $1.2$ a $1.5$ veces más rápido. 
+	Los resultados experimentales demuestran que es aproximadamente de $7$ a $10$ veces más rápido que el 
+	software \textit{sgrep}, una herramienta estado-del-arte para el procesamiento de documentos estructurados.
+	
+	\item \textbf{\bibentry{takeda2001speeding}}
+	
+	Se presenta una técnica enfocada en la compresión de cualquier tipo de texto, incluso texto en alfabeto Unicode como el japonés.
+	La compresión es basada en Byte-Pair Encoding (BPE) \cite{gage1994new}. También se presentan dos algoritmos para las búsquedas en el texto
+	comprimido uno que es una variante del algoritmo Boyer-Moore \cite{boyer1977fast} y otro que es una variante del algoritmo
+	Knuth-Morris-Pratt \cite{knuth1977fast}.
+	
+	Se presentan resultados experimentales de ambos algoritmos en comparación con otros algoritmos presentes en la literatura.
+	La técnica mostrada puede ser usada con textos con codificación en múltiples bytes, a diferencia de otras técnicas
+	que son únicamente aptas para texto con codificación en 1-byte.
+	
+	\item \textbf{\bibentry{Ziv2002}}
+	
+	Presenta un algoritmo universal para compresión de información secuencial que tiende a generar índices de compresión óptimos.
+	El algoritmo propuesto consiste de una regla para generación de subcadenas a partir de un alfabeto $A$, las cuales no pueden 
+	sobrepasar un tamaño $L$, asignándoles palabras claves (\textit{codewords}) únicos descifrables.
+	
+	El artículo presenta una extensa demostración del algoritmo propuesto. No hay resultados experimentales acerca del algoritmo
+	pero la complejidad del mismo es demostrada en el artículo.
+	
+	\item \bibentry{Ziv2003}
+	
+\end{itemize}
+
+\bibliography{all}
+
+\end{document}

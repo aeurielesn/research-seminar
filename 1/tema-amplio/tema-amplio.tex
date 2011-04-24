@@ -1,0 +1,60 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{natbib}
+%\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage[spanish]{babel}
+%\usepackage[tex4ht]{hyperref} % activate when creating an HTML
+\usepackage{hyperref}
+%\usepackage{tex4ht} % activate when creating an HTML
+\bibliographystyle{unsrt} 
+
+\title{Tema Amplio de Investigación}
+
+\author{Alexander Enrique Urieles Nieto\\
+\href{mailto:aeurielesn@gmail.com}{\nolinkurl{aeurielesn@unal.edu.co}}}
+
+\date{Maestría en Sistemas y Computación\\
+Departamento de Ingeniería de Sistemas e Industrial\\
+Universidad Nacional de Colombia}
+
+\begin{document}
+
+\maketitle
+
+\section*{Tema Amplio de Investigación}
+
+De acuerdo con mi Interés de Investigación \citep{Urieles2011a}, 
+el área de Compresión de Información es mi área de interés general de 
+investigación, el cual hace parte del estudio de las Ciencias de la Computación
+y de la Teoría de la Información.
+
+A lo largo de los años múltiples algoritmos han aparecido mejorando
+la calidad de la compresión especialmente LZ77 \citep{Ziv2002} y LZ78 \citep{Ziv2003},
+así como sus variaciones.
+
+Sin embargo, junto con el aumento en la calidad de la compresión, la 
+cantidad de información para almacenar no únicamente a nivel local sino a nivel mundial
+ha aumentado también, especialmente para las bases de datos. El progreso en las
+técnicas de compresión ha ayudado a aminorar la cantidad de espacio en disco 
+que ocupa esta información.
+
+Desgraciadamente para poder realizar búsquedas en esta información comprimida
+se necesitaba primero descomprimir y utilizar técnicas de búsquedas de subcadenas
+(como Sunday \citep{sunday1990very}) para encontrar las ocurrencias del patrón
+buscado en el texto comprimido.
+
+Desde el trabajo presentado en \citep{Amir2002} se inició una nueva rama de investigación
+denominada \emph{Compressed Matching Problem}, que busca resolver el problema de 
+búsqueda de ocurrencias de un patrón ya sea exacto, aproximado o complejos directamente
+en el texto comprimido sin necesidad de descompresión.
+
+En \emph{Compressed Matching Problem} hay una necesidad de encontrar
+mejores soluciones para los problemas de ocurrencias exactas, aproximadas y complejas
+que sean por lo menos igualmente de rápidas que en el problema de encontrar las ocurrencias
+en el texto descomprimido original.
+
+\bibliography{tema-amplio}
+
+\end{document}
