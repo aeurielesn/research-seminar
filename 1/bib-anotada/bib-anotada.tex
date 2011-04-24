@@ -1,7 +1,7 @@
 \documentclass[letterpaper,10pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{natbib}
+%\usepackage{natbib}
 \usepackage{bibentry}
 %\setlength{\parskip}{\medskipamount}
 \setlength{\parindent}{0pt}
@@ -11,7 +11,6 @@
 %\usepackage{tex4ht} % activate when creating an HTML
 
 \nobibliography*
-\bibliographystyle{unsrt}
 
 \title{Bibliografía Anotada}
 
@@ -102,9 +101,42 @@ Universidad Nacional de Colombia}
 	
 	\item \textbf{\bibentry{Brisaboa2007}}
 	
+	Presenta dos nuevos esquemas estadísticos semi-estáticos de compresión para lenguajes naturales basados en
+	\textit{Tagged Huffman Codes} \cite{Moura2000}. Estos esquemas permiten una codificación sencilla y rápida, 
+	tienen mejores índices de compresión que su predecesor, permiten búsquedas en texto comprimido sin necesidad de descompresión
+	explicita y permite descompresión local de forma aleatoria en el texto comprimido.
+	
+	Los dos esquemas de compresión: End-Tagged Dense Codes y $(s,c)$-Dense Codes. Los \textit{End-Tagged Dense Codes} se diferencian
+	de los Tagged Huffman Codes por la ubicación del bit de señalización de inicio de una palabra clave, usa el bit menos significativo
+	en vez de usar el bit más significativo. Este cambio beneficia el rango de posibilidades para la generación de palabras claves.
+	
+	Los $(s,c)$-\textit{Dense Codes}, $s$ por \textit{stoppers} y $c$ por \textit{continuers}; son una generalización de los
+	End-Tagged Dense Codes en la cual se busca optimizar la cantidad de stoppers y continuers usados. Entre mayor es el valor de $s$
+	se gana compresión en las palabras más frecuentes y se pierde compresión en las menos frecuentes. Razón por la cual
+	se busca hallar valores óptimos de $s$ y $c$. En la práctica es suficiente con aplicar una búsqueda binaria para localizar el 
+	valor mínimo para computar los mejores $s$ y $c$.
+	
+	Con unas pequeñas modificaciones se puede usar cualquier algoritmo de búsqueda. En este caso, los autores usan el Boyer-Moore (BM)
+	\cite{boyer1977fast} que puede ser aplicado casi sin modificación alguna. Una verificación es realizada después de cada ocurrencia
+	para asegurar que el algoritmo encontró efectivamente el inicio de palabra.
+	
+	Los \textit{Dense Codes} se generan aproximadamente entre un $45\%$ y $60\%$ más rápido que los códigos Huffman.
+	
+	Los resultados experimentales muestran que End-Tagged Dense Codes son entre un $2\%$ y $5\%$ más rápidos que Tagged Huffman Codes.
+	Las búsquedan en $(s,c)$-\textit{Dense Codes} son entre un $2.5\%$ y $7\%$ más rápidas que en End-Tagged Dense Codes, y entre un 
+	$5\%$ y $10\%$ más rápidas que en Tagged Huffman Codes. $(s,c)$-\textit{Dense Codes} presenta mejores tiempos de búsqueda para 
+	textos de tamaño medio y Tagged Huffman Codes para textos largos.
+	
 	\item \textbf{\bibentry{burrows1994block}}
 	
-	Burrows-Wheeler
+	Presenta un esquema de compresión que aplica una \textit{transformada reversible} a un bloque de texto para explotar 
+	las redundancias en el texto y hacerlas más accesibles para otras técnicas de compresión.
+	
+	El algoritmo transforma una cadena generando sus rotaciones cíclicas, ordenándolas lexicográficamente y extrayendo el último carácter 
+	de cada rotación. El autor demuestra que la cadena original se puede obtener a partir del último carácter de cada rotación y la posición
+	de la cadena original dentro del conjunto de rotaciones.
+	
+	También explica porqué este esquema genera buenos resultados para compresión.
 	
 	\item \textbf{\bibentry{chen2004compressed}}
 	
@@ -253,7 +285,14 @@ Universidad Nacional de Colombia}
 	algoritmos original.
 	
 	\item \bibentry{KNUjda02}
-	\item \bibentry{lempel2002complexity}
+	\item \textbf{\bibentry{lempel2002complexity}}
+	
+	Se presenta un nuevo criterio para evaluación de la complejidad de secuencias finitas basado en la cantidad de pasos
+	necesarios para la construcción del texto haciendo uso de una regla general de construcción de subcadenas 
+	a partir de subcadenas anteriormente encontradas en el texto.
+	
+	Los autores presentan un estudio riguroso.
+	
 	\item \textbf{\bibentry{Manber1997}}
 	
 	Presenta un nuevo esquema de compresión de información que busca facilitar las búsquedas directamente en el texto
@@ -452,10 +491,13 @@ Universidad Nacional de Colombia}
 	El artículo presenta una extensa demostración del algoritmo propuesto. No hay resultados experimentales acerca del algoritmo
 	pero la complejidad del mismo es demostrada en el artículo.
 	
-	\item \bibentry{Ziv2003}
+	\item \textbf{\bibentry{Ziv2003}}
+	
+	?
 	
 \end{itemize}
 
 \bibliography{all}
+\bibliographystyle{unsrt}
 
 \end{document}
