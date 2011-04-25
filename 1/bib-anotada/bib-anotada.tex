@@ -273,7 +273,23 @@ Universidad Nacional de Colombia}
 	
 	El algoritmo puede ser adaptado para búsquedas aproximadas y a búsqueda de múltiples patrones.
 	
-	\item \textbf{\bibentry{kida2002multiple}}
+	\item \textbf{\bibentry{kida2002multiple}}	
+	
+	Presenta dos algoritmo: uno que reporta las ocurrencias de múltiples patrones directamente sobre texto comprimido
+	sin necesidad de descompresión explicita, y un segundo algoritmo para búsquedas de patrones simples. La técnica 
+	de compresión objetivo es LZW \cite{welch1984technique} y \textit{Collage Systems} \cite{kida2002unifying}.
+	
+	El algoritmo de multi-patrones básicamente simula el movimiento de una máquina Aho-Corasick (AC) \cite{aho1975efficient}.
+	La búsqueda de patrones simples está basada en paralelismo de bits. Los resultados experimentales muestran
+	que ambos algoritmos son más rápidos que una descompresión seguida de una búsqueda con \textit{Agrep}. También
+	cabe resaltar que los algoritmos son incluso más rápidos que una búsqueda directa sobre el texto descomprimido
+	en el caso de tener discos de almacenamiento remotos.
+	
+	La complejidad del algoritmo propuesto para búsqueda de múltiples patrones es de $O(n + m^{2} + r)$ haciendo uso
+	de $O(n + m^{2})$ de espacio; donde $m$ es la longitud del patrón, $r$ el número de ocurrencias del patrón.
+	El algoritmo para búsqueda de patrones simples tiene por complejidad en tiempo de $O(\left\lceil m/w \right\rceil (n + r))$, 
+	después de un preprocesamiento en tiempo y espacio de $O(m)$.
+	
 	\item \textbf{\bibentry{klein2002new}}
 	
 	Se plantea un nuevo algoritmo de compresión de substitución de texto basado en el algoritmo LZSS \cite{storer1982data}
@@ -284,7 +300,20 @@ Universidad Nacional de Colombia}
 	El método no presenta buenos índices de compresión. Las pruebas empíricas presentan mejores resultados que el
 	algoritmos original.
 	
-	\item \bibentry{KNUjda02}
+	\item \textbf{\bibentry{KNUjda02}}
+	
+	Presenta el primer algoritmo no-trivial para búsquedas aproximadas de patrones directamente en texto comprimido
+	para la familia de algoritmos LZ \cite{Ziv2002,Ziv2003,welch1984technique,storer1982data}.
+	El algoritmo propuesto es basado en \textit{Edit Distance} y es capaz de reportar todas las ocurrencias del patrón.
+	
+	El archivo comprimido se procesa bloque por bloque, razón por la cual el algoritmo propuesto tuvo que ser 
+	modificado para recibir bloques de compresión de LZ en vez de carácter por carácter. Para cada bloque se 
+	calcula la descripción y se actualiza el estado dependiendo de ésta. Las ocurrencias se comprueban por patrones
+	terminados en el bloque actual y por patrones contenidos en el bloque actual.
+	
+	El algoritmo propuesto presenta una complejidad de peor caso de $O(kmn + R)$ para encontrar todas las $R$ ocurrencias de
+	un patrón de tamaño $m$ permitiendo $k$ errores, y un tiempo promedio de $O(k^{2}n + R)$.
+	
 	\item \textbf{\bibentry{lempel2002complexity}}
 	
 	Se presenta un nuevo criterio para evaluación de la complejidad de secuencias finitas basado en la cantidad de pasos
@@ -379,7 +408,27 @@ Universidad Nacional de Colombia}
 	como Sunday \cite{sunday1990very}. Se deja claro que para algoritmos \textsl{adaptativos} como la familia de algoritmos LZ, la 
 	localidad referencial es el gran inconveniente para la resolución del problema de búsqueda sobre texto comprimido.
 	
-	\item \bibentry{navarro2005lzgrep}
+	\item \textbf{\bibentry{navarro2005lzgrep}}
+	
+	Presenta un algoritmo para búsqueda sobre texto comprimido sin descompresión explicita usando LZ78 y LZW basado en 
+	Boyer-Moore (BM) \cite{boyer1977fast} aprovechando la propiedad para omitir comprobaciones innecesarias.
+	Una herramiento \textit{LZgrep} implementando esta técnica está disponible.
+	
+	El algoritmo BM hace uso de los caracteres explícitos de cada bloque de la compresión LZ78 y LZW para realizar los desplazamientos
+	del patrón. También se modificó una versión para que acepte \textit{q}-tuplas de caracteres que funciona
+	mejor con alfabetos pequeños que la versión BM normal. Otra optimización para lograr desplazamientos por bloques completos de
+	compresión fue implementada.
+	
+	En total 5 técnicas fueron implementadas, 3 técnicas diferentes a parte de las dos mencionadas anteriormente para comparación.
+	Para patrones simples la versión multi-carácter de BM presenta los mejores resultados para secuencias de ADN y la versión normal
+	de BM se comportó mejor en texto naturales en inglés.
+	
+	En búsquedas multi-patrones la versión BM con procesamiento de bloques se desempeña mejor para secuencias de ADN para patrones cortos
+	y la versión multi-carácter para patrones largas.
+	
+	Los resultados experimentales muestran que se alcanzan hasta un $50\%$ más de velocidad en comparación con en el enfoque 
+	trivial de descomprimir y luego realizar una búsqueda sobre el texto descomprimido.
+	
 	\item \textbf{\bibentry{navarro2000boyer}}
 	
 	Presenta un algoritmo basado en el algoritmo Boyer-Moore (BM) \cite{boyer1977fast} para búsqueda sobre texto comprimido aplicable
@@ -491,9 +540,12 @@ Universidad Nacional de Colombia}
 	El artículo presenta una extensa demostración del algoritmo propuesto. No hay resultados experimentales acerca del algoritmo
 	pero la complejidad del mismo es demostrada en el artículo.
 	
+	Denominado LZ1 o LZ77.
+	
 	\item \textbf{\bibentry{Ziv2003}}
 	
-	?
+	Presenta el algoritmo LZ2 o LZ78, que a diferencia de su predecesor el LZ77 \cite{Ziv2002} permite búsquedas de las subcadenas
+	tanto en el pasado desde un diccionario como en el futuro leyendo desde el \textit{buffer} de entrada.
 	
 \end{itemize}
 
